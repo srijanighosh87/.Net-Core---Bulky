@@ -1,10 +1,17 @@
-using BulkyWeb.Data;
+using Bulky.Data;
+using Bulky.DataAccess.Repository;
+using Bulky.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//register services for Repositories
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 //Register Entity framework services to container :  register implementation class for DbContext
 // options container which database we want to connect to
@@ -33,7 +40,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");  
+    pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");  
 //if no controller is available, go to homecontroller and Index action 
 
 app.Run();

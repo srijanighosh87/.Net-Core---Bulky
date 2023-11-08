@@ -1,7 +1,7 @@
-﻿using BulkyWeb.Models;
+﻿using Bulky.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BulkyWeb.Data
+namespace Bulky.Data
 {
     //ApplicationDbContext inherits DbContext class
     public class ApplicationDbContext : DbContext
@@ -21,13 +21,13 @@ namespace BulkyWeb.Data
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {
-                    CategoryId= 1,
+                    CategoryId= Guid.NewGuid(),
                     DisplayOrder = 1,
                     Name = "Action"
                 },
                 new Category
                 {
-                    CategoryId = 2,
+                    CategoryId = Guid.NewGuid(),
                     DisplayOrder = 2,
                     Name = "Sci-Fi"
                 });

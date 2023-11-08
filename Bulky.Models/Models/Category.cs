@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BulkyWeb.Models
+namespace Bulky.Models
 {
     public class Category
     {
         //[Key]
         //public int Category_Id { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         [Required]
         [DisplayName("Category Name")]
         [MaxLength(30, ErrorMessage ="In 30 characters please!")]
