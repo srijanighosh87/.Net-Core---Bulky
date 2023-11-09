@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bulky.Models
 {
@@ -8,25 +10,31 @@ namespace Bulky.Models
         public Guid ProductId { get; set; }
         [Required]
         public string Title { get; set; }
-        string Description { get; set; }
+        public string Description { get; set; }
         [Required]
-        string ISBN { get; set; }
+        public string ISBN { get; set; }
         [Required]
-        string Auhor { get; set; }
+        public string Author { get; set; }
         [Required]
         [Display(Name = "price for 1-50")]
         [Range(1,1000)]
-        double Price { get; set; }
+        public double Price { get; set; }
 
         [Required]
         [Display(Name = "Price for 50+")]
         [Range(1, 1000)]
-        double Price50 { get; set; }
+        public double Price50 { get; set; }
         [Required]
         [Display(Name = "Price for 100+")]
         [Range(1, 1000)]
-        double Price100 { get; set; }
-        //[Required]
-        //Category category { get; set; }
+        public double Price100 { get; set; }
+        [ForeignKey("CategoryId")]
+        [Display(Name = "Category")]
+        [ValidateNever]
+        public Category Category { get; set; }
+        [Display(Name = "Category")]
+        public Guid CategoryId { get; set; }
+        [ValidateNever]
+        public string? ImageUrl { get; set; }
     }
 }

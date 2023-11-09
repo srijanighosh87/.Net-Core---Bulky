@@ -3,6 +3,7 @@ using System;
 using Bulky.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109094756_AddForeignKeyCategoryToProduct")]
+    partial class AddForeignKeyCategoryToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,13 +46,13 @@ namespace Bulky.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = new Guid("3aebd236-1805-4ae2-9c5c-17b20aea29fc"),
+                            CategoryId = new Guid("8a634208-318c-4f43-94ed-d4801d4130ff"),
                             DisplayOrder = 1,
                             Name = "Action"
                         },
                         new
                         {
-                            CategoryId = new Guid("2d3be734-5e92-45d8-af2c-c64133a57d42"),
+                            CategoryId = new Guid("c3163d63-6c31-4f80-9950-ebd8b59c229d"),
                             DisplayOrder = 2,
                             Name = "Sci-Fi"
                         });
@@ -76,9 +79,6 @@ namespace Bulky.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
-
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
@@ -101,12 +101,11 @@ namespace Bulky.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("23e8a10b-2f31-4ef3-9c1a-e38b7e90f70f"),
+                            ProductId = new Guid("998658c3-d30d-49a3-a0ef-2c7151139ff9"),
                             Author = "Rabindranath Tagore",
-                            CategoryId = new Guid("3aebd236-1805-4ae2-9c5c-17b20aea29fc"),
+                            CategoryId = new Guid("8a634208-318c-4f43-94ed-d4801d4130ff"),
                             Description = "Early 20th century Indian Literature",
                             ISBN = "0123456789",
-                            ImageUrl = "",
                             Price = 20.0,
                             Price100 = 13.0,
                             Price50 = 17.0,
@@ -114,12 +113,11 @@ namespace Bulky.DataAccess.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("332d9c78-d643-4e3c-a4dc-d9b847738001"),
+                            ProductId = new Guid("80a55152-a7d8-440a-921c-7d4187a4767f"),
                             Author = "Neil Gaiman",
-                            CategoryId = new Guid("2d3be734-5e92-45d8-af2c-c64133a57d42"),
+                            CategoryId = new Guid("c3163d63-6c31-4f80-9950-ebd8b59c229d"),
                             Description = "American Gods",
                             ISBN = "7894631",
-                            ImageUrl = "",
                             Price = 20.0,
                             Price100 = 13.0,
                             Price50 = 17.0,

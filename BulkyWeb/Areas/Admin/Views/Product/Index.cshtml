@@ -1,0 +1,60 @@
+﻿@model List<Product>
+
+<partial name="_Notification" />
+
+<div class="container">
+    <div class="row pt-4">
+         <div class="col-6">
+             <h2 class="text-primary">
+                Product List
+              </h2>
+         </div>
+        <div class="col-6 text-end">
+            <a asp-controller="product" asp-action="CreateProduct" class="btn btn-primary"> 
+                <i class="bi bi-plus-circle"></i>
+                Create New product
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped ">
+    <thead>   
+        <tr>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>ISBN</th>
+            <th>Price 1-50</th>
+            <th>Price 50+</th>
+            <th>Price 100+</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var c in Model.OrderBy(u => u.Title))
+            {
+                <tr>
+                    <td>@c.Title</td>
+                    <td>@c.Author</td>
+                    <td>@c.Description</td>
+                    <td>@c.Category</td>
+                    <td>@c.ISBN</td>
+                    <td>@c.Price</td>
+                    <td>@c.Price50</td>
+                    <td>@c.Price100</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="product" asp-action="EditProduct" asp-route-productId="@c.ProductId" class="btn btn-primary mx-2">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                            <a asp-controller="product" asp-action="DeleteProduct" asp-route-productId="@c.ProductId" class="btn btn-danger mx-2">
+                            <i class="bi bi-trash-fill"></i>
+                        </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+</div>
+

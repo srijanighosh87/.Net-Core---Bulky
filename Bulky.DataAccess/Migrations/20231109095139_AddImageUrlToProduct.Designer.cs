@@ -3,6 +3,7 @@ using System;
 using Bulky.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109095139_AddImageUrlToProduct")]
+    partial class AddImageUrlToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,13 +46,13 @@ namespace Bulky.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = new Guid("3aebd236-1805-4ae2-9c5c-17b20aea29fc"),
+                            CategoryId = new Guid("c0293586-af15-4319-9c49-efa44b3e8c50"),
                             DisplayOrder = 1,
                             Name = "Action"
                         },
                         new
                         {
-                            CategoryId = new Guid("2d3be734-5e92-45d8-af2c-c64133a57d42"),
+                            CategoryId = new Guid("d2782e33-9108-4e94-a93a-931ec1398265"),
                             DisplayOrder = 2,
                             Name = "Sci-Fi"
                         });
@@ -77,6 +80,7 @@ namespace Bulky.DataAccess.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<double>("Price")
@@ -101,9 +105,9 @@ namespace Bulky.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("23e8a10b-2f31-4ef3-9c1a-e38b7e90f70f"),
+                            ProductId = new Guid("18775f88-7bc7-41ec-a1ff-4b6ad9c5b9cf"),
                             Author = "Rabindranath Tagore",
-                            CategoryId = new Guid("3aebd236-1805-4ae2-9c5c-17b20aea29fc"),
+                            CategoryId = new Guid("c0293586-af15-4319-9c49-efa44b3e8c50"),
                             Description = "Early 20th century Indian Literature",
                             ISBN = "0123456789",
                             ImageUrl = "",
@@ -114,9 +118,9 @@ namespace Bulky.DataAccess.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("332d9c78-d643-4e3c-a4dc-d9b847738001"),
+                            ProductId = new Guid("4fc9aa2d-edec-4bb6-b940-37c881fd06e3"),
                             Author = "Neil Gaiman",
-                            CategoryId = new Guid("2d3be734-5e92-45d8-af2c-c64133a57d42"),
+                            CategoryId = new Guid("d2782e33-9108-4e94-a93a-931ec1398265"),
                             Description = "American Gods",
                             ISBN = "7894631",
                             ImageUrl = "",
